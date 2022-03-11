@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
-import { LaunchesModule } from './launches/launches.module';
+import { LaunchModule } from './launch/launch.module';
+import { HttpConfigService } from './http-config/http-config.service';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { LaunchesModule } from './launches/launches.module';
       playground: true,
       autoSchemaFile: true,
     }),
-    LaunchesModule,
+    LaunchModule,
   ],
+  providers: [HttpConfigService],
 })
 export class AppModule {}
