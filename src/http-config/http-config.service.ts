@@ -5,7 +5,7 @@ import { HttpModuleOptions, HttpModuleOptionsFactory } from '@nestjs/axios';
 export class HttpConfigService implements HttpModuleOptionsFactory {
   createHttpOptions(): HttpModuleOptions {
     return {
-      baseURL: 'https://api.spacexdata.com/v4',
+      baseURL: process.env.SPACEXAPI_URL,
     };
   }
 }
