@@ -6,7 +6,7 @@ import { LaunchService } from './launch.service';
 
 @Resolver(() => Launch)
 export class LaunchResolver {
-  constructor(private launchService: LaunchService) {}
+  constructor(private readonly launchService: LaunchService) {}
 
   @Query(() => [Launch])
   async getAllLaunches() {
@@ -32,7 +32,7 @@ export class LaunchResolver {
     limit: number,
     @Args('sort', { type: () => String, nullable: true }) sort: string,
   ) {
-    return this.launchService.getPaginatedLaunch(page, limit, sort);
+    return this.launchService.getLaunchQuery(page, limit, sort);
   }
 
   @Query(() => Launch)
@@ -49,9 +49,4 @@ export class LaunchResolver {
   async getUpcomingLaunches() {
     return this.launchService.getUpcomingLaunches();
   }
-
-  // @ResolveField('cores', () => [Core], { nullable: true })
-  // async getLaunchCores(@Parent() launch: Launch) {
-  //   return launch;
-  // }
 }

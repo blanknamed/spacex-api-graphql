@@ -2,17 +2,17 @@ import { Field, ObjectType, Int } from '@nestjs/graphql';
 
 import { DatePrecisionEnum } from '../enums/datePrecisionEnum';
 
-import { Core } from './Core.model';
 import { LaunchLinks } from './Links.model';
 import { Fairings } from './Fairings.model';
+import { LaunchCore } from './LaunchCore.model';
 
 @ObjectType()
 export class Launch {
   @Field(() => String)
   id: string;
 
-  @Field(() => [Core], { nullable: true })
-  cores?: Core[];
+  @Field(() => [LaunchCore], { nullable: 'items' })
+  cores?: LaunchCore[];
 
   @Field(() => Boolean, { nullable: true })
   upcoming?: boolean;
@@ -42,28 +42,24 @@ export class Launch {
   @Field(() => String, { nullable: true })
   launchpad?: string;
 
-  // !TODO String[] | Payload[]
-  @Field(() => [String], { nullable: true })
+  @Field(() => [String], { nullable: 'items' })
   payloads?: string[];
 
-  // !TODO String[] | Capsule[]
-  @Field(() => [String], { nullable: true })
+  @Field(() => [String], { nullable: 'items' })
   capsules?: string[];
 
-  // !TODO String[] | Ship[]
-  @Field(() => [String], { nullable: true })
+  @Field(() => [String], { nullable: 'items' })
   ships?: string[];
 
-  @Field(() => [String], { nullable: true })
+  @Field(() => [String], { nullable: 'items' })
   crew?: string[];
 
-  @Field(() => [String], { nullable: true })
+  @Field(() => [String], { nullable: 'items' })
   failures?: string[];
 
   @Field(() => Boolean, { nullable: true })
   success?: boolean;
 
-  // !TODO String | Rocket
   @Field(() => String, { nullable: true })
   rocket?: string;
 
@@ -85,8 +81,8 @@ export class Launch {
   @Field(() => LaunchLinks, { nullable: true })
   links?: LaunchLinks;
 
-  @Field(() => Fairings, { nullable: true })
-  fairings?: Fairings;
+  @Field(() => [Fairings], { nullable: 'itemsAndList' })
+  fairings?: Fairings[];
 
   @Field(() => String, { nullable: true })
   details?: string;
