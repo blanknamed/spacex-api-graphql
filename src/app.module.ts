@@ -13,6 +13,7 @@ import { DragonModule } from './dragon/dragon.module';
 import { CrewModule } from './crew/crew.module';
 import { LandPadModule } from './landpad/landpad.module';
 import { LaunchpadModule } from './launchpad/launchpad.module';
+import { PayloadModule } from './payload/payload.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { LaunchpadModule } from './launchpad/launchpad.module';
     CrewModule,
     LandPadModule,
     LaunchpadModule,
+    PayloadModule,
   ],
   providers: [HttpConfigService],
 })
