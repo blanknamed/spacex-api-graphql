@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
+import { UtilsModule } from '@app/utils';
 
 import { HttpConfigService } from '../http-config/http-config.service';
 
@@ -11,6 +12,7 @@ import { LaunchResolver } from './launch.resolver';
     HttpModule.registerAsync({
       useClass: HttpConfigService,
     }),
+    UtilsModule,
   ],
   providers: [LaunchService, LaunchResolver],
 })
