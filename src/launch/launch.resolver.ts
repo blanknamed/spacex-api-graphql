@@ -1,7 +1,7 @@
 import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 
-import { Launch } from './models/launch.model';
-import { LaunchQuery } from './models/launchQuery.model';
+import { Launch } from './models/Launch.model';
+import { LaunchQuery } from './models/LaunchQuery.model';
 import { LaunchService } from './launch.service';
 
 @Resolver(() => Launch)

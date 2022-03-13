@@ -3,9 +3,9 @@ import { map } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { UtilsService } from '@app/utils';
 
-import { Launch } from './models/launch.model';
+import { Launch } from './models/Launch.model';
 import * as LaunchUrls from './constants/urls';
-import { LaunchQuery } from './models/launchQuery.model';
+import { LaunchQuery } from './models/LaunchQuery.model';
 
 import type { ApiQueryRequest } from './types/apiQuery';
 

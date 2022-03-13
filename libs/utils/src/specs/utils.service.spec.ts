@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AxiosResponse } from 'axios';
-
-import { UtilsService } from './utils.service';
+import { UtilsService } from '@app/utils/utils.service';
 
 describe('UtilsService', () => {
   let service: UtilsService;

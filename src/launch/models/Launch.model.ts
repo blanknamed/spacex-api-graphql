@@ -2,9 +2,9 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 import { DatePrecisionEnum } from '../enums/datePrecisionEnum';
 
-import { Core } from './core.model';
-import { LaunchLinks } from './links.model';
-import { Fairings } from './fairings.model';
+import { Core } from './Core.model';
+import { LaunchLinks } from './Links.model';
+import { Fairings } from './Fairings.model';
 
 @ObjectType()
 export class Launch {

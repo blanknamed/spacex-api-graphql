@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
-import { Launch } from './launch.model';
+import { Launch } from './Launch.model';
 
 @ObjectType()
 export class LaunchQuery {
