@@ -70,7 +70,7 @@ export class Launch {
   net?: boolean;
 
   @Field(() => Boolean, { nullable: true })
-  tdb?: boolean;
+  tbd?: boolean;
 
   @Field(() => String, { nullable: true })
   staticFireDateUnix?: string;

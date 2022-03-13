@@ -1,6 +1,6 @@
 import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
+import { ThrustUnits } from '@app/utils';
 
-import { ThrustUnits } from './Units.model';
 import { ISP } from './ISP.model';
 
 @ObjectType()
