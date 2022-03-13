@@ -1,11 +1,15 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 import { LandPadType } from '../enums/LandPadType.enum';
+import { LandPadStatus } from '../enums/LandPadStatus.enum';
 
 @ObjectType()
 export class LandPad {
   @Field(() => String)
   name: string;
+
+  @Field(() => LandPadStatus)
+  status: LandPadStatus;
 
   @Field(() => String)
   fullName: string;
@@ -30,9 +34,6 @@ export class LandPad {
 
   @Field(() => Number)
   landingSuccesses: number;
-
-  @Field(() => String)
-  wikipedia: string;
 
   @Field(() => String)
   details: string;

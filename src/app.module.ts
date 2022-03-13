@@ -12,6 +12,7 @@ import { CapsuleModule } from './capsule/capsule.module';
 import { DragonModule } from './dragon/dragon.module';
 import { CrewModule } from './crew/crew.module';
 import { LandPadModule } from './landpad/landpad.module';
+import { LaunchpadModule } from './launchpad/launchpad.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { LandPadModule } from './landpad/landpad.module';
     DragonModule,
     CrewModule,
     LandPadModule,
+    LaunchpadModule,
   ],
   providers: [HttpConfigService],
 })
