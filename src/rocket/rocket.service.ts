@@ -3,38 +3,37 @@ import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
 import { UtilsService, ApiQueryRequest } from '@app/utils';
 
-import * as CoreUrls from './constants/urls';
-import { Core } from './models/Core.model';
-import { CoreQuery } from './models/CoreQuery.model';
+import { RocketQuery } from './models/RocketQuery.model';
+import * as RocketUrls from './constants/urls';
 
 @Injectable()
-export class CoreService {
+export class RocketService {
   constructor(
     private readonly httpService: HttpService,
     private readonly utilsService: UtilsService,
   ) {}
 
-  async getAllCores() {
+  async getAllRockets() {
     return this.httpService
-      .get<Core[]>(CoreUrls.baseCoreUrl)
+      .get(RocketUrls.baseRocketUrl)
       .pipe(
         map(this.utilsService.mapData),
         map(this.utilsService.camelCaseDataKeys),
       );
   }
 
-  async getCoreById(id: string) {
+  async getRocketById(id: string) {
     return this.httpService
-      .get<Core>(`${CoreUrls.baseCoreUrl}/${id}`)
+      .get(`${RocketUrls.baseRocketUrl}/${id}`)
       .pipe(
         map(this.utilsService.mapData),
         map(this.utilsService.camelCaseDataKeys),
       );
   }
 
-  async getCoreQuery(page, limit, sort) {
+  async getRocketByQuery(page: number, limit: number, sort: string) {
     return this.httpService
-      .post<CoreQuery>(CoreUrls.queryCoreUrl, {
+      .post<RocketQuery>(RocketUrls.queryRocketUrl, {
         options: {
           limit,
           page,

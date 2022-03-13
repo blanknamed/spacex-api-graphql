@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
-import { UtilsService } from '@app/utils';
+import { ApiQueryRequest, UtilsService } from '@app/utils';
 
 import { Launch } from './models/Launch.model';
 import * as LaunchUrls from './constants/urls';
 import { LaunchQuery } from './models/LaunchQuery.model';
-
-import type { ApiQueryRequest } from './types/apiQuery';
 
 @Injectable()
 export class LaunchService {
@@ -34,7 +32,7 @@ export class LaunchService {
       );
   }
 
-  getLaunchQuery(page, limit, sort) {
+  getLaunchQuery(page: number, limit: number, sort: string) {
     return this.httpService
       .post<LaunchQuery>(LaunchUrls.queryLaunchUrl, {
         options: {

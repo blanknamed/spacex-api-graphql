@@ -5,6 +5,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { HttpConfigService } from './http-config/http-config.service';
 import { LaunchModule } from './launch/launch.module';
 import { CoreModule } from './core/core.module';
+import { RocketModule } from './rocket/rocket.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CoreModule } from './core/core.module';
     }),
     LaunchModule,
     CoreModule,
+    RocketModule,
   ],
   providers: [HttpConfigService],
 })
