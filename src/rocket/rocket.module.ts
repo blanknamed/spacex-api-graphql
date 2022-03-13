@@ -3,20 +3,17 @@ import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
 import { HttpConfigService } from '../http-config/http-config.service';
-import { RocketModule } from '../rocket/rocket.module';
-import { RocketService } from '../rocket/rocket.service';
 
-import { LaunchService } from './launch.service';
-import { LaunchResolver } from './launch.resolver';
+import { RocketResolver } from './rocket.resolver';
+import { RocketService } from './rocket.service';
 
 @Module({
   imports: [
     HttpModule.registerAsync({
       useClass: HttpConfigService,
     }),
-    RocketModule,
     UtilsModule,
   ],
-  providers: [LaunchService, LaunchResolver, RocketService],
+  providers: [RocketResolver, RocketService],
 })
-export class LaunchModule {}
+export class RocketModule {}

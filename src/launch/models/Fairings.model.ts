@@ -2,16 +2,16 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Fairings {
-  @Field(() => Boolean)
-  reused: boolean;
+  @Field(() => Boolean, { nullable: true })
+  reused?: boolean;
 
-  @Field(() => Boolean)
-  recoveryAttempt: boolean;
+  @Field(() => Boolean, { nullable: true })
+  recoveryAttempt?: boolean;
 
-  @Field(() => Boolean)
-  recovered: boolean;
+  @Field(() => Boolean, { nullable: true })
+  recovered?: boolean;
 
   //! TODO: Switch to ships //UUID
-  @Field(() => [String])
-  ships: string[];
+  @Field(() => [String], { nullable: true })
+  ships?: string[];
 }

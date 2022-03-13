@@ -5,6 +5,7 @@ import { DatePrecisionEnum } from '../enums/datePrecisionEnum';
 import { LaunchLinks } from './Links.model';
 import { Fairings } from './Fairings.model';
 import { LaunchCore } from './LaunchCore.model';
+import { Failure } from './Failure.model';
 
 @ObjectType()
 export class Launch {
@@ -38,7 +39,6 @@ export class Launch {
   @Field(() => Boolean, { nullable: true })
   autoUpdate?: boolean;
 
-  // !TODO String | Launchpad
   @Field(() => String, { nullable: true })
   launchpad?: string;
 
@@ -54,8 +54,8 @@ export class Launch {
   @Field(() => [String], { nullable: 'items' })
   crew?: string[];
 
-  @Field(() => [String], { nullable: 'items' })
-  failures?: string[];
+  @Field(() => [Failure], { nullable: 'items' })
+  failures?: Failure[];
 
   @Field(() => Boolean, { nullable: true })
   success?: boolean;
@@ -81,8 +81,8 @@ export class Launch {
   @Field(() => LaunchLinks, { nullable: true })
   links?: LaunchLinks;
 
-  @Field(() => [Fairings], { nullable: 'itemsAndList' })
-  fairings?: Fairings[];
+  @Field(() => Fairings, { nullable: true })
+  fairings?: Fairings;
 
   @Field(() => String, { nullable: true })
   details?: string;
