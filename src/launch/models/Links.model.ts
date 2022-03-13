@@ -2,26 +2,26 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 class PatchLinks {
-  @Field(() => String)
-  small: string;
+  @Field(() => String, { nullable: true })
+  small?: string;
 
-  @Field(() => String)
-  large: string;
+  @Field(() => String, { nullable: true })
+  large?: string;
 }
 
 @ObjectType()
 class RedditLinks {
-  @Field(() => String)
-  campaign: string;
+  @Field(() => String, { nullable: true })
+  campaign?: string;
 
-  @Field(() => String)
-  launch: string;
+  @Field(() => String, { nullable: true })
+  launch?: string;
 
-  @Field(() => String)
-  media: string;
+  @Field(() => String, { nullable: true })
+  media?: string;
 
-  @Field(() => String)
-  recovery: string;
+  @Field(() => String, { nullable: true })
+  recovery?: string;
 }
 
 @ObjectType()
@@ -35,27 +35,27 @@ class FlickrLinks {
 
 @ObjectType()
 export class LaunchLinks {
-  @Field(() => PatchLinks)
-  patch: PatchLinks;
+  @Field(() => PatchLinks, { nullable: true })
+  patch?: PatchLinks;
 
-  @Field(() => RedditLinks)
-  reddit: RedditLinks;
+  @Field(() => RedditLinks, { nullable: true })
+  reddit?: RedditLinks;
 
-  @Field(() => FlickrLinks)
-  flickr: FlickrLinks;
+  @Field(() => FlickrLinks, { nullable: true })
+  flickr?: FlickrLinks;
 
-  @Field(() => String)
-  presskit: string;
+  @Field(() => String, { nullable: true })
+  presskit?: string;
 
-  @Field(() => String)
-  webcast: string;
+  @Field(() => String, { nullable: true })
+  webcast?: string;
 
-  @Field(() => String)
-  youtubeId: string;
+  @Field(() => String, { nullable: true })
+  youtubeId?: string;
 
-  @Field(() => String)
-  article: string;
+  @Field(() => String, { nullable: true })
+  article?: string;
 
-  @Field(() => String)
-  wikipedia: string;
+  @Field(() => String, { nullable: true })
+  wikipedia?: string;
 }
