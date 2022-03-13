@@ -1,6 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-
-import { ThrustUnits } from './Units.model';
+import { ThrustUnits } from '@app/utils';
 
 @ObjectType()
 export class RocketStage {
