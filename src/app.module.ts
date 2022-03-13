@@ -10,6 +10,7 @@ import { CompanyInfoModule } from './company-info/company-info.module';
 import { RoadsterModule } from './roadster/roadster.module';
 import { CapsuleModule } from './capsule/capsule.module';
 import { DragonModule } from './dragon/dragon.module';
+import { CrewModule } from './crew/crew.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { DragonModule } from './dragon/dragon.module';
     CompanyInfoModule,
     CapsuleModule,
     DragonModule,
+    CrewModule,
   ],
   providers: [HttpConfigService],
 })
