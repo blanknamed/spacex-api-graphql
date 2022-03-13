@@ -1,6 +1,6 @@
 import { Field, ObjectType, Int } from '@nestjs/graphql';
 
-import { DatePrecisionEnum } from '../enums/datePrecisionEnum';
+import { DatePrecision } from '../enums/datePrecision';
 
 import { LaunchLinks } from './Links.model';
 import { Fairings } from './Fairings.model';
@@ -18,8 +18,8 @@ export class Launch {
   @Field(() => Boolean, { nullable: true })
   upcoming?: boolean;
 
-  @Field(() => DatePrecisionEnum, { nullable: true })
-  datePrecision?: DatePrecisionEnum;
+  @Field(() => DatePrecision, { nullable: true })
+  datePrecision?: DatePrecision;
 
   @Field(() => String, { nullable: true })
   dateLocal?: string;
