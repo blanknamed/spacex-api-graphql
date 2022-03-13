@@ -38,34 +38,34 @@ export class Launch {
   @Field(() => Boolean, { nullable: true })
   autoUpdate?: boolean;
 
-  // String | Launchpad
+  // !TODO String | Launchpad
   @Field(() => String, { nullable: true })
   launchpad?: string;
 
-  // String[] | Payload[]
+  // !TODO String[] | Payload[]
   @Field(() => [String], { nullable: true })
   payloads?: string[];
 
-  // String[] | Capsule[]
+  // !TODO String[] | Capsule[]
   @Field(() => [String], { nullable: true })
   capsules?: string[];
 
-  // String[] | Ship[]
+  // !TODO String[] | Ship[]
   @Field(() => [String], { nullable: true })
   ships?: string[];
 
-  // String[] | Crew[]
+  // !TODO String[] | Crew[]
   @Field(() => [String], { nullable: true })
   crew?: string[];
 
-  // String[] | Failure[]
+  // !TODO String[] | Failure[]
   @Field(() => [String], { nullable: true })
   failures?: string[];
 
   @Field(() => Boolean, { nullable: true })
   success?: boolean;
 
-  // String | Rocket
+  // !TODO String | Rocket
   @Field(() => String, { nullable: true })
   rocket?: string;
 
