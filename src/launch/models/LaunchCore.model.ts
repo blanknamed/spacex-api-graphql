@@ -1,6 +1,6 @@
 import { Field, ObjectType, ID } from '@nestjs/graphql';
 
-import { LandingType } from '../../core/enums/landingTypes';
+import { LandingType } from '../../core/enums/landingTypes.enum';
 
 @ObjectType()
 export class LaunchCore {

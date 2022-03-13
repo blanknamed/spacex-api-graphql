@@ -1,6 +1,6 @@
 import { registerEnumType } from '@nestjs/graphql';
 
-export enum DatePrecisionEnum {
+export enum DatePrecision {
   hour = 'hour',
   day = 'day',
   month = 'month',
@@ -9,6 +9,6 @@ export enum DatePrecisionEnum {
   'quarter' = 'quarter',
 }
 
-registerEnumType(DatePrecisionEnum, {
-  name: 'DatePrecisionEnum',
+registerEnumType(DatePrecision, {
+  name: 'DatePrecision',
 });

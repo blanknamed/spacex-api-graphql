@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { RocketModule } from './rocket/rocket.module';
 import { CompanyInfoModule } from './company-info/company-info.module';
 import { RoadsterModule } from './roadster/roadster.module';
+import { CapsuleModule } from './capsule/capsule.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RoadsterModule } from './roadster/roadster.module';
     RocketModule,
     RoadsterModule,
     CompanyInfoModule,
+    CapsuleModule,
   ],
   providers: [HttpConfigService],
 })

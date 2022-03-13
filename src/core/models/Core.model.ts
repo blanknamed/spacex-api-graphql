@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 
-import { CoreStatus } from '../enums/status';
+import { CoreStatus } from '../enums/status.enum';
 
 @ObjectType()
 export class Core {
