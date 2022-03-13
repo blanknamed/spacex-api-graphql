@@ -21,7 +21,6 @@ import { RoadsterModule } from './roadster/roadster.module';
     RocketModule,
     RoadsterModule,
     CompanyInfoModule,
-    RoadsterModule,
   ],
   providers: [HttpConfigService],
 })
