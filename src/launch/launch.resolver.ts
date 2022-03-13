@@ -18,11 +18,7 @@ export class LaunchResolver {
     return this.launchService.getLaunchById(id);
   }
 
-  @Query(() => LaunchQuery)
-  async getLaunchByQuery(@Args('id', { type: () => String }) id: string) {
-    return this.launchService.getLaunchById(id);
-  }
-
+  // !TODO: Need to add filtration
   @Query(() => LaunchQuery)
   async getPaginatedLaunch(
     @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })

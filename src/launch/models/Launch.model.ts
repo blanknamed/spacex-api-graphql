@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType, Int } from '@nestjs/graphql';
 
 import { DatePrecisionEnum } from '../enums/datePrecisionEnum';
 
@@ -32,7 +32,7 @@ export class Launch {
   @Field(() => String, { nullable: true })
   name?: string;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Int, { nullable: true })
   flightNumber?: number;
 
   @Field(() => Boolean, { nullable: true })
@@ -69,8 +69,8 @@ export class Launch {
   @Field(() => String, { nullable: true })
   rocket?: string;
 
-  @Field(() => Number, { nullable: true })
-  window?: number;
+  @Field(() => String, { nullable: true })
+  window?: string;
 
   @Field(() => Boolean, { nullable: true })
   net?: boolean;
