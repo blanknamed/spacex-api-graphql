@@ -25,16 +25,17 @@ export class LaunchResolver {
 
   @Query(() => LaunchQuery)
   async getPaginatedLaunch(
-    @Args('page', { type: () => Int }) page: number,
-    @Args('limit', { type: () => Int }) limit: number,
+    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
+    page: number,
+    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
+    limit: number,
     @Args('sort', { type: () => String, nullable: true }) sort: string,
   ) {
     return this.launchService.getPaginatedLaunch(page, limit, sort);
   }
 
-  // @ResolveField()
-  // async posts(@Parent() author: Author) {
-  //   const { id } = author;
-  //   return this.postsService.findAll({ authorId: id });
+  // @ResolveField('cores', () => [Core], { nullable: true })
+  // async getLaunchCores(@Parent() launch: Launch) {
+  //   return launch;
   // }
 }
