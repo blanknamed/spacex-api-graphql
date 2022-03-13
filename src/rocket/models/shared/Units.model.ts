@@ -2,10 +2,10 @@ import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class SizeUnits {
-  @Field(() => Int)
+  @Field(() => Float)
   meters: number;
 
-  @Field(() => Int)
+  @Field(() => Float)
   feet: number;
 }
 
@@ -20,9 +20,9 @@ export class MassUnits {
 
 @ObjectType()
 export class ThrustUnits {
-  @Field(() => Float)
+  @Field(() => Int)
   kN: number;
 
-  @Field(() => Float)
+  @Field(() => Int)
   lbf: number;
 }

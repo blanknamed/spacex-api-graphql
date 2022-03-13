@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 
 import { ThrustUnits } from './Units.model';
 import { ISP } from './ISP.model';
@@ -29,12 +29,12 @@ export class Engines {
   @Field(() => String)
   propellant2: string;
 
-  @Field(() => ThrustUnits)
+  @Field(() => ThrustUnits, { nullable: true })
   thrustSeaLevel: ThrustUnits;
 
-  @Field(() => ThrustUnits)
+  @Field(() => ThrustUnits, { nullable: true })
   thrustVacuum: ThrustUnits;
 
-  @Field(() => Int)
+  @Field(() => Float, { nullable: true })
   thrustToWeight: number;
 }

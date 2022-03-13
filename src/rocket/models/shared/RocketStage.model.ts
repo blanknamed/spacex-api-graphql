@@ -16,9 +16,9 @@ export class RocketStage {
   @Field(() => Number)
   burnTimeSec: number;
 
-  @Field(() => ThrustUnits)
+  @Field(() => ThrustUnits, { nullable: true })
   thrustSeaLevel: ThrustUnits;
 
-  @Field(() => ThrustUnits)
+  @Field(() => ThrustUnits, { nullable: true })
   thrustVacuum: ThrustUnits;
 }

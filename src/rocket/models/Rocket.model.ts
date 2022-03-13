@@ -21,7 +21,7 @@ export class Rocket {
   @Field(() => Int)
   stages: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   booster: number;
 
   @Field(() => Int)
@@ -48,7 +48,7 @@ export class Rocket {
   @Field(() => MassUnits)
   mass: MassUnits;
 
-  @Field(() => [PayloadWeights])
+  @Field(() => [PayloadWeights], { nullable: 'items' })
   payloadWeights: Array<PayloadWeights>;
 
   @Field(() => RocketStage)
@@ -57,7 +57,7 @@ export class Rocket {
   @Field(() => RocketStage)
   secondStage: RocketStage;
 
-  @Field(() => CompositeFairing)
+  @Field(() => CompositeFairing, { nullable: true })
   compositeFairing: CompositeFairing;
 
   @Field(() => Engines)
@@ -66,13 +66,13 @@ export class Rocket {
   @Field(() => LandingLegs)
   landingLegs: LandingLegs;
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: 'items' })
   flickrImages: Array<string>;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   wikipedia: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   description: string;
 
   @Field(() => ID)
