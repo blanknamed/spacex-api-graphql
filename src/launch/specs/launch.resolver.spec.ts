@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { LaunchResolver } from './launch.resolver';
+import { LaunchResolver } from '../launch.resolver';
 
 describe('LaunchResolver', () => {
   let resolver: LaunchResolver;
