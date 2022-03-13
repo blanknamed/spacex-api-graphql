@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { UtilsService } from '@app/utils';
 import { map } from 'rxjs';
+import { UtilsService } from '@app/utils';
 
 @Injectable()
 export class CompanyInfoService {
