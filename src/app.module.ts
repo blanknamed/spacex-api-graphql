@@ -11,6 +11,7 @@ import { RoadsterModule } from './roadster/roadster.module';
 import { CapsuleModule } from './capsule/capsule.module';
 import { DragonModule } from './dragon/dragon.module';
 import { CrewModule } from './crew/crew.module';
+import { LandPadModule } from './landpad/landpad.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CrewModule } from './crew/crew.module';
     CapsuleModule,
     DragonModule,
     CrewModule,
+    LandPadModule,
   ],
   providers: [HttpConfigService],
 })
