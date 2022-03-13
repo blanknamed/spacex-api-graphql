@@ -7,6 +7,7 @@ import { LaunchModule } from './launch/launch.module';
 import { CoreModule } from './core/core.module';
 import { RocketModule } from './rocket/rocket.module';
 import { CompanyInfoModule } from './company-info/company-info.module';
+import { RoadsterModule } from './roadster/roadster.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CompanyInfoModule } from './company-info/company-info.module';
     LaunchModule,
     CoreModule,
     RocketModule,
+    RoadsterModule,
     CompanyInfoModule,
   ],
   providers: [HttpConfigService],
