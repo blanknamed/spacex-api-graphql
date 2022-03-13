@@ -8,7 +8,7 @@ export class UtilsService {
     return res.data;
   };
 
-  camelCaseDataKeys = (data: Record<string, unknown>) => {
-    return camelcaseKeys(data, { deep: true });
+  camelCaseDataKeys = <T extends Record<string, unknown>>(data: T): T => {
+    return camelcaseKeys(data, { deep: true }) as T;
   };
 }

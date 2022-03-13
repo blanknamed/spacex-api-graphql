@@ -11,7 +11,7 @@ export class Fairings {
   @Field(() => Boolean)
   recovered: boolean;
 
-  //! TODO: Switch to ships
+  //! TODO: Switch to ships //UUID
   @Field(() => [String])
   ships: string[];
 }

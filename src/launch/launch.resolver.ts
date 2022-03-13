@@ -8,8 +8,13 @@ import { LaunchService } from './launch.service';
 export class LaunchResolver {
   constructor(private launchService: LaunchService) {}
 
+  @Query(() => [Launch])
+  async getAllLaunches() {
+    return this.launchService.getAllLaunches();
+  }
+
   @Query(() => Launch)
-  async nextLaunch() {
+  async getNextLaunch() {
     return this.launchService.getNextLaunch();
   }
 
@@ -28,6 +33,21 @@ export class LaunchResolver {
     @Args('sort', { type: () => String, nullable: true }) sort: string,
   ) {
     return this.launchService.getPaginatedLaunch(page, limit, sort);
+  }
+
+  @Query(() => Launch)
+  async getLatestLaunch() {
+    return this.launchService.getLatestLaunch();
+  }
+
+  @Query(() => [Launch])
+  async getPastLaunches() {
+    return this.launchService.getPastLaunches();
+  }
+
+  @Query(() => [Launch])
+  async getUpcomingLaunches() {
+    return this.launchService.getUpcomingLaunches();
   }
 
   // @ResolveField('cores', () => [Core], { nullable: true })

@@ -16,9 +16,9 @@ export class LaunchService {
     private readonly utilsService: UtilsService,
   ) {}
 
-  getNextLaunch() {
+  getAllLaunches() {
     return this.httpService
-      .get<Launch>(LaunchUrls.nextLaunchUrl)
+      .get<Launch>(LaunchUrls.launchBaseUrl)
       .pipe(
         map(this.utilsService.mapData),
         map(this.utilsService.camelCaseDataKeys),
@@ -49,12 +49,39 @@ export class LaunchService {
       );
   }
 
-  // GetLaunchByName(name: string) {
-  //   return this.httpService
-  //     .get<Launch>(`${LaunchUrls.launchBaseUrl}/${id}`)
-  //     .pipe(
-  //       map(this.utilsService.mapData),
-  //       map(this.utilsService.camelCaseDataKeys),
-  //     );
-  // }
+  getLatestLaunch() {
+    return this.httpService
+      .get<Launch>(LaunchUrls.latestLaunch)
+      .pipe(
+        map(this.utilsService.mapData),
+        map(this.utilsService.camelCaseDataKeys),
+      );
+  }
+
+  getNextLaunch() {
+    return this.httpService
+      .get<Launch>(LaunchUrls.nextLaunchUrl)
+      .pipe(
+        map(this.utilsService.mapData),
+        map(this.utilsService.camelCaseDataKeys),
+      );
+  }
+
+  getPastLaunches() {
+    return this.httpService
+      .get<Launch[]>(LaunchUrls.pastLaunch)
+      .pipe(
+        map(this.utilsService.mapData),
+        map(this.utilsService.camelCaseDataKeys),
+      );
+  }
+
+  getUpcomingLaunches() {
+    return this.httpService
+      .get<Launch[]>(LaunchUrls.upcomingLaunches)
+      .pipe(
+        map(this.utilsService.mapData),
+        map(this.utilsService.camelCaseDataKeys),
+      );
+  }
 }

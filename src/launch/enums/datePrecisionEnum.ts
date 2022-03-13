@@ -5,6 +5,8 @@ export enum DatePrecisionEnum {
   day = 'day',
   month = 'month',
   year = 'year',
+  'half' = 'half',
+  'quarter' = 'quarter',
 }
 
 registerEnumType(DatePrecisionEnum, {

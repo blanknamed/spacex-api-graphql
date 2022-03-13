@@ -54,11 +54,9 @@ export class Launch {
   @Field(() => [String], { nullable: true })
   ships?: string[];
 
-  // !TODO String[] | Crew[]
   @Field(() => [String], { nullable: true })
   crew?: string[];
 
-  // !TODO String[] | Failure[]
   @Field(() => [String], { nullable: true })
   failures?: string[];
 
@@ -69,8 +67,8 @@ export class Launch {
   @Field(() => String, { nullable: true })
   rocket?: string;
 
-  @Field(() => String, { nullable: true })
-  window?: string;
+  @Field(() => Int, { nullable: true })
+  window?: number;
 
   @Field(() => Boolean, { nullable: true })
   net?: boolean;
@@ -89,4 +87,7 @@ export class Launch {
 
   @Field(() => Fairings, { nullable: true })
   fairings?: Fairings;
+
+  @Field(() => String, { nullable: true })
+  details?: string;
 }
