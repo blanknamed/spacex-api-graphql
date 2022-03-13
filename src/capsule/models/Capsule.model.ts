@@ -6,7 +6,10 @@ import { DragonType } from '../enums/DragonType.enum';
 @ObjectType()
 export class Capsule {
   @Field(() => String)
-  serial: string;
+  id: string;
+
+  @Field(() => String, { nullable: true })
+  serial?: string;
 
   @Field(() => CapsuleStatus)
   status: CapsuleStatus;
@@ -23,8 +26,8 @@ export class Capsule {
   @Field(() => Number)
   waterLandings: number;
 
-  @Field(() => Number)
-  landLandings: number;
+  @Field(() => Number, { nullable: true })
+  landLandings?: number;
 
   @Field(() => String, { nullable: true })
   lastUpdate?: string;
