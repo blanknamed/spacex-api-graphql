@@ -19,6 +19,7 @@ import { RoadsterModule } from './roadster/roadster.module';
     LaunchModule,
     CoreModule,
     RocketModule,
+    RoadsterModule,
     CompanyInfoModule,
     RoadsterModule,
   ],
