@@ -34,7 +34,7 @@ export class LaunchService {
       );
   }
 
-  getPaginatedLaunch(page, limit, sort) {
+  getLaunchQuery(page, limit, sort) {
     return this.httpService
       .post<LaunchQuery>(LaunchUrls.queryLaunchUrl, {
         options: {
