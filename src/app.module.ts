@@ -6,6 +6,7 @@ import { HttpConfigService } from './http-config/http-config.service';
 import { LaunchModule } from './launch/launch.module';
 import { CoreModule } from './core/core.module';
 import { RocketModule } from './rocket/rocket.module';
+import { CompanyInfoModule } from './company-info/company-info.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { RocketModule } from './rocket/rocket.module';
     LaunchModule,
     CoreModule,
     RocketModule,
+    CompanyInfoModule,
   ],
   providers: [HttpConfigService],
 })
