@@ -36,8 +36,9 @@ describe('UtilsService', () => {
     // eslint-disable-next-line camelcase
     const responseEntity = { not_a_camel_case_key: '', camelCaseKey: '' };
 
-    const mappedEntity = service.camelCaseDataKeys(responseEntity);
-
-    expect(mappedEntity).toEqual({ notACamelCaseKey: '', camelCaseKey: '' });
+    expect(service.camelCaseDataKeys(responseEntity)).toEqual({
+      notACamelCaseKey: '',
+      camelCaseKey: '',
+    });
   });
 });
