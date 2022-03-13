@@ -3,6 +3,8 @@ import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
 import { HttpConfigService } from '../http-config/http-config.service';
+import { RocketModule } from '../rocket/rocket.module';
+import { RocketService } from '../rocket/rocket.service';
 
 import { LaunchService } from './launch.service';
 import { LaunchResolver } from './launch.resolver';
@@ -12,8 +14,9 @@ import { LaunchResolver } from './launch.resolver';
     HttpModule.registerAsync({
       useClass: HttpConfigService,
     }),
+    RocketModule,
     UtilsModule,
   ],
-  providers: [LaunchService, LaunchResolver],
+  providers: [LaunchService, LaunchResolver, RocketService],
 })
 export class LaunchModule {}

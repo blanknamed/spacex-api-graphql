@@ -1,4 +1,14 @@
-import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+
+import { RocketService } from '../rocket/rocket.service';
+import { Rocket } from '../rocket/models/Rocket.model';
 
 import { Launch } from './models/Launch.model';
 import { LaunchQuery } from './models/LaunchQuery.model';
@@ -6,7 +16,10 @@ import { LaunchService } from './launch.service';
 
 @Resolver(() => Launch)
 export class LaunchResolver {
-  constructor(private readonly launchService: LaunchService) {}
+  constructor(
+    private readonly launchService: LaunchService,
+    private readonly rocketService: RocketService,
+  ) {}
 
   @Query(() => [Launch])
   async getAllLaunches() {
@@ -48,5 +61,10 @@ export class LaunchResolver {
   @Query(() => [Launch])
   async getUpcomingLaunches() {
     return this.launchService.getUpcomingLaunches();
+  }
+
+  @ResolveField('rocket', () => Rocket)
+  async getRocketInfo(@Parent() launch: Launch) {
+    return this.rocketService.getRocketById(launch.rocket);
   }
 }
