@@ -1,9 +1,8 @@
 import { Args, Int, Resolver, Query } from '@nestjs/graphql';
 
-import { LaunchQuery } from '../launch/models/LaunchQuery.model';
-
 import { RocketService } from './rocket.service';
 import { Rocket } from './models/Rocket.model';
+import { RocketQuery } from './models/RocketQuery.model';
 
 @Resolver()
 export class RocketResolver {
@@ -19,7 +18,7 @@ export class RocketResolver {
     return this.rocketService.getRocketById(id);
   }
 
-  @Query(() => LaunchQuery)
+  @Query(() => RocketQuery)
   async getRocketByQuery(
     @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
     page: number,
