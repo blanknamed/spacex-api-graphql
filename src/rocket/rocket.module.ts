@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
-import { HttpConfigService } from '../http-config/http-config.service';
+import { ApiModule } from '../api/api.module';
+import { ApiService } from '../api/api.service';
 
 import { RocketResolver } from './rocket.resolver';
 import { RocketService } from './rocket.service';
 
 @Module({
-  imports: [
-    HttpModule.registerAsync({
-      useClass: HttpConfigService,
-    }),
-    UtilsModule,
-  ],
-  providers: [RocketResolver, RocketService],
+  imports: [ApiModule, UtilsModule],
+  providers: [ApiService, RocketResolver, RocketService],
 })
 export class RocketModule {}
