@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
+import { UtilsService } from '@app/utils';
 
 import { ApiService } from '../api/api.service';
 
@@ -11,18 +12,21 @@ import type { Launch } from './models/Launch.model';
 
 @Injectable()
 export class LaunchService {
-  constructor(private readonly apiService: ApiService) {}
+  constructor(
+    private readonly apiService: ApiService,
+    private readonly utilsService: UtilsService,
+  ) {}
 
   getAllLaunches() {
     return this.apiService
       .get<Launch>(LaunchUrls.launchBaseUrl)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   getLaunchById(id: string) {
     return this.apiService
       .get<Launch>(`${LaunchUrls.launchBaseUrl}/${id}`)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   async getLaunchQuery(page: number, limit: number, sort: string) {
@@ -34,30 +38,30 @@ export class LaunchService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   getLatestLaunch() {
     return this.apiService
       .get<Launch>(LaunchUrls.latestLaunch)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   getNextLaunch() {
     return this.apiService
       .get<Launch>(LaunchUrls.nextLaunchUrl)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   getPastLaunches() {
     return this.apiService
       .get<Launch[]>(LaunchUrls.pastLaunch)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 
   getUpcomingLaunches() {
     return this.apiService
       .get<Launch[]>(LaunchUrls.upcomingLaunches)
-      .pipe(map((res) => res.data));
+      .pipe(map(this.utilsService.mapData));
   }
 }

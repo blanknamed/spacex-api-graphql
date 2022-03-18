@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
-import { HttpConfigService } from '../http-config/http-config.service';
+import { ApiModule } from '../api/api.module';
 
 import { CoreService } from './core.service';
 import { CoreResolver } from './core.resolver';
 
 @Module({
-  imports: [
-    HttpModule.registerAsync({
-      useClass: HttpConfigService,
-    }),
-    UtilsModule,
-  ],
+  imports: [ApiModule, UtilsModule],
   providers: [CoreService, CoreResolver],
+  exports: [CoreService],
 })
 export class CoreModule {}

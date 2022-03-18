@@ -1,19 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
 import { ApiQueryRequest, UtilsService } from '@app/utils';
+
+import { ApiService } from '../api/api.service';
 
 import * as DragonUrls from './constants/urls';
 import { DragonQuery } from './models/DragonQuery.model';
 @Injectable()
 export class DragonService {
   constructor(
-    private readonly httpService: HttpService,
+    private readonly apiService: ApiService,
     private readonly utilsService: UtilsService,
   ) {}
 
   getAllDragons() {
-    return this.httpService
+    return this.apiService
       .get(DragonUrls.baseDragonUrl)
       .pipe(
         map(this.utilsService.mapData),
@@ -22,7 +23,7 @@ export class DragonService {
   }
 
   getDragonById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${DragonUrls.baseDragonUrl}/${id}`)
       .pipe(
         map(this.utilsService.mapData),
@@ -31,7 +32,7 @@ export class DragonService {
   }
 
   getDragonByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<DragonQuery>(DragonUrls.queryDragonUrl, {
         options: {
           limit,

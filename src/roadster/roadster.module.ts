@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
-import { HttpConfigService } from '../http-config/http-config.service';
+import { ApiModule } from '../api/api.module';
 
 import { RoadsterService } from './roadster.service';
 import { RoadsterResolver } from './roadster.resolver';
 
 @Module({
-  imports: [
-    HttpModule.registerAsync({
-      useClass: HttpConfigService,
-    }),
-    UtilsModule,
-  ],
+  imports: [ApiModule, UtilsModule],
   providers: [RoadsterService, RoadsterResolver],
+  exports: [RoadsterService],
 })
 export class RoadsterModule {}

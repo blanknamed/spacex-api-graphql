@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
 import { ApiQueryRequest, UtilsService } from '@app/utils';
+
+import { ApiService } from '../api/api.service';
 
 import * as PayloadUrls from './constants/urls';
 import { PayloadQuery } from './models/PayloadQuery.model';
@@ -9,30 +10,24 @@ import { PayloadQuery } from './models/PayloadQuery.model';
 @Injectable()
 export class PayloadService {
   constructor(
-    private readonly httpService: HttpService,
+    private readonly apiService: ApiService,
     private readonly utilsService: UtilsService,
   ) {}
 
   getAllPayloads() {
-    return this.httpService
+    return this.apiService
       .get(PayloadUrls.basePayloadUrl)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 
   getPayloadById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${PayloadUrls.basePayloadUrl}/${id}`)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 
   getPayloadByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<PayloadQuery>(PayloadUrls.queryPayloadUrl, {
         options: {
           limit,
@@ -40,9 +35,6 @@ export class PayloadService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 }

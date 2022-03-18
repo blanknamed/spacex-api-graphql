@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
-import { HttpConfigService } from '../http-config/http-config.service';
+import { ApiModule } from '../api/api.module';
 
 import { CrewResolver } from './crew.resolver';
 import { CrewService } from './crew.service';
 
 @Module({
-  imports: [
-    HttpModule.registerAsync({
-      useClass: HttpConfigService,
-    }),
-    UtilsModule,
-  ],
+  imports: [ApiModule, UtilsModule],
   providers: [CrewResolver, CrewService],
+  exports: [CrewService],
 })
 export class CrewModule {}

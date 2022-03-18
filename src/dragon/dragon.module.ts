@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { UtilsModule } from '@app/utils';
 
-import { HttpConfigService } from '../http-config/http-config.service';
+import { ApiModule } from '../api/api.module';
 
 import { DragonResolver } from './dragon.resolver';
 import { DragonService } from './dragon.service';
 
 @Module({
-  imports: [
-    HttpModule.registerAsync({
-      useClass: HttpConfigService,
-    }),
-    UtilsModule,
-  ],
+  imports: [ApiModule, UtilsModule],
   providers: [DragonResolver, DragonService],
+  exports: [DragonService],
 })
 export class DragonModule {}

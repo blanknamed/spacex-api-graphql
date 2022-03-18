@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { ApiQueryRequest, UtilsService } from '@app/utils';
 import { map } from 'rxjs';
+
+import { ApiService } from '../api/api.service';
 
 import * as CrewUrls from './constants/urls';
 import { CrewQuery } from './models/CrewQuery.model';
@@ -9,30 +10,24 @@ import { CrewQuery } from './models/CrewQuery.model';
 @Injectable()
 export class CrewService {
   constructor(
-    private readonly httpService: HttpService,
+    private readonly apiService: ApiService,
     private readonly utilsService: UtilsService,
   ) {}
 
   getAllCrew() {
-    return this.httpService
+    return this.apiService
       .get(CrewUrls.baseCrewUrl)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 
   getCrewById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${CrewUrls.baseCrewUrl}/${id}`)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 
   getCrewByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<CrewQuery>(CrewUrls.queryCrewUrl, {
         options: {
           limit,
@@ -40,9 +35,6 @@ export class CrewService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map(this.utilsService.mapData));
   }
 }
