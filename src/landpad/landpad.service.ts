@@ -1,30 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { ApiQueryRequest, UtilsService } from '@app/utils';
 import { map } from 'rxjs';
+import { ApiService } from '@app/api/api.service';
+import { ApiQueryRequest } from '@app/api/interfaces';
 
 import * as CrewUrls from '../crew/constants/urls';
-import { ApiService } from '../api/api.service';
 
 import * as LandPadUrls from './constants/urls';
 import { LandpadQuery } from './models/LandPadQuery.model';
 
 @Injectable()
 export class LandPadService {
-  constructor(
-    private readonly apiService: ApiService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   async getAllLandPads() {
     return this.apiService
       .get(LandPadUrls.baseLandPadUrl)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   async getLandPadById(id: string) {
     return this.apiService
       .get(`${LandPadUrls.baseLandPadUrl}/${id}`)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   async getLandPadByQuery(page: number, limit: number, sort: string) {
@@ -36,6 +33,6 @@ export class LandPadService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 }

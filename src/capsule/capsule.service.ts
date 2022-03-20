@@ -1,29 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { ApiQueryRequest, UtilsService } from '@app/utils';
-
-import { ApiService } from '../api/api.service';
+import { ApiService } from '@app/api/api.service';
+import { ApiQueryRequest } from '@app/api/interfaces';
 
 import * as CapsuleUrls from './constants/urls';
 import { CapsuleQuery } from './models/CapsuleQuery.model';
 
 @Injectable()
 export class CapsuleService {
-  constructor(
-    private readonly apiService: ApiService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   getAllCapsules() {
     return this.apiService
       .get(CapsuleUrls.baseCapsuleUrl)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   getCapsuleById(id: string) {
     return this.apiService
       .get(`${CapsuleUrls.baseCapsuleUrl}/${id}`)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   getCapsuleByQuery(page: number, limit: number, sort: string) {
@@ -35,6 +31,6 @@ export class CapsuleService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 }

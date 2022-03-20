@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { VolumeUnits } from '@app/utils';
+import { VolumeUnits } from '@app/interfaces';
 
 @ObjectType()
 export class CargoInfo {

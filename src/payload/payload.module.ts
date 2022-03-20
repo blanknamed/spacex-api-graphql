@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
-import { UtilsModule } from '@app/utils';
+import { ApiModule } from '@app/api/api.module';
 
 import { LaunchModule } from '../launch/launch.module';
-import { ApiModule } from '../api/api.module';
 
 import { PayloadResolver } from './payload.resolver';
 import { PayloadService } from './payload.service';
 
 @Module({
-  imports: [ApiModule, UtilsModule, LaunchModule],
+  imports: [ApiModule, LaunchModule],
   providers: [PayloadResolver, PayloadService],
   exports: [PayloadService],
 })

@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { SizeUnits } from '@app/utils/models/Units.model';
+import { SizeUnits } from '@app/interfaces';
 
 @ObjectType()
 export class CompositeFairing {

@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { UtilsModule } from '@app/utils';
-
-import { ApiModule } from '../api/api.module';
+import { ApiModule } from '@app/api/api.module';
 
 import { DragonResolver } from './dragon.resolver';
 import { DragonService } from './dragon.service';
 
 @Module({
-  imports: [ApiModule, UtilsModule],
+  imports: [ApiModule],
   providers: [DragonResolver, DragonService],
   exports: [DragonService],
 })

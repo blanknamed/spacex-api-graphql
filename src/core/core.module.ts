@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { UtilsModule } from '@app/utils';
-
-import { ApiModule } from '../api/api.module';
+import { ApiModule } from '@app/api/api.module';
 
 import { CoreService } from './core.service';
 import { CoreResolver } from './core.resolver';
 
 @Module({
-  imports: [ApiModule, UtilsModule],
+  imports: [ApiModule],
   providers: [CoreService, CoreResolver],
   exports: [CoreService],
 })

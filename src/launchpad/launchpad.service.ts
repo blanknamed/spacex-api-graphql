@@ -1,33 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { ApiQueryRequest, UtilsService } from '@app/utils';
-
-import { ApiService } from '../api/api.service';
+import { ApiService } from '@app/api/api.service';
+import { ApiQueryRequest } from '@app/api/interfaces';
 
 import { LaunchPadQuery } from './models/LaunchPadQuery.model';
 import * as LaunchPadUrls from './constants/urls';
 
 @Injectable()
 export class LaunchPadService {
-  constructor(
-    private readonly httpServicapiService: ApiService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   getAllLaunchPads() {
-    return this.httpServicapiService
+    return this.apiService
       .get(LaunchPadUrls.baseLaunchPadUrl)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   getLaunchPadById(id: string) {
-    return this.httpServicapiService
+    return this.apiService
       .get(`${LaunchPadUrls.baseLaunchPadUrl}/${id}`)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   getLaunchPadByQuery(page: number, limit: number, sort: string) {
-    return this.httpServicapiService
+    return this.apiService
       .post<LaunchPadQuery>(LaunchPadUrls.queryLaunchPadUrl, {
         options: {
           limit,
@@ -35,6 +31,6 @@ export class LaunchPadService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 }

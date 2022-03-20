@@ -1,5 +1,5 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import { MassUnits, SizeUnits } from '@app/utils';
+import { MassUnits, SizeUnits } from '@app/interfaces';
 
 import { RocketStage } from './shared/RocketStage.model';
 import { CompositeFairing } from './shared/CompositeFairing.model';

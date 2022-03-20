@@ -1,11 +1,5 @@
-import {
-  Args,
-  Int,
-  Parent,
-  Query,
-  ResolveField,
-  Resolver,
-} from '@nestjs/graphql';
+import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@app/interfaces';
 
 import { LaunchService } from '../launch/launch.service';
 import { Launch } from '../launch/models/Launch.model';
@@ -14,7 +8,7 @@ import { Payload } from './models/Payload.model';
 import { PayloadService } from './payload.service';
 import { PayloadQuery } from './models/PayloadQuery.model';
 
-@Resolver(() => Payload)
+@Resolver(() => Payload, {})
 export class PayloadResolver {
   constructor(
     private readonly payloadService: PayloadService,
@@ -33,13 +27,14 @@ export class PayloadResolver {
 
   @Query(() => PayloadQuery)
   async getPayloadByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    params: QueryInputParameters,
   ) {
-    return this.payloadService.getPayloadByQuery(page, limit, sort);
+    return this.payloadService.getPayloadByQuery(
+      params.page,
+      params.limit,
+      params.sort,
+    );
   }
 
   @ResolveField('launch', () => Launch)

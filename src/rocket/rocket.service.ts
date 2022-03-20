@@ -1,29 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { UtilsService, ApiQueryRequest } from '@app/utils';
-
-import { ApiService } from '../api/api.service';
+import { ApiService } from '@app/api/api.service';
+import { ApiQueryRequest } from '@app/api/interfaces';
 
 import { RocketQuery } from './models/RocketQuery.model';
 import * as RocketUrls from './constants/urls';
 
 @Injectable()
 export class RocketService {
-  constructor(
-    private readonly apiService: ApiService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   async getAllRockets() {
     return this.apiService
       .get(RocketUrls.baseRocketUrl)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   async getRocketById(id: string) {
     return this.apiService
       .get(`${RocketUrls.baseRocketUrl}/${id}`)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 
   async getRocketByQuery(page: number, limit: number, sort: string) {
@@ -35,6 +31,6 @@ export class RocketService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(map(this.utilsService.mapData));
+      .pipe(map((res) => res.data));
   }
 }

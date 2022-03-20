@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { UtilsModule } from '@app/utils';
-
-import { ApiModule } from '../api/api.module';
+import { ApiModule } from '@app/api/api.module';
 
 import { RoadsterService } from './roadster.service';
 import { RoadsterResolver } from './roadster.resolver';
 
 @Module({
-  imports: [ApiModule, UtilsModule],
+  imports: [ApiModule],
   providers: [RoadsterService, RoadsterResolver],
   exports: [RoadsterService],
 })

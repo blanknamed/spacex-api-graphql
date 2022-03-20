@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { AbstractQueryModel } from '@app/utils';
+import { AbstractQueryModel } from '@app/api/models/AbstractQuery.model';
 
 import { Capsule } from './Capsule.model';
 
