@@ -1,10 +1,10 @@
-name: Lint
+name: ESLint
 
 on:
-  pull_request:
   push:
-    branches:
-      - master
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
   eslint:
@@ -21,3 +21,4 @@ jobs:
           eslint-args: '--ignore-path=.gitignore --quiet'
           extensions: 'js,jsx,ts,tsx'
           annotations: true
+

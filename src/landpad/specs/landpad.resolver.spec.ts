@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { LandpadResolver } from '../landpad.resolver';
+import { LandPadResolver } from '../landpad.resolver';
 
-describe('LandpadResolver', () => {
-  let resolver: LandpadResolver;
+describe('LandPadResolver', () => {
+  let resolver: LandPadResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [LandpadResolver],
+      providers: [LandPadResolver],
     }).compile();
 
-    resolver = module.get<LandpadResolver>(LandpadResolver);
+    resolver = module.get<LandPadResolver>(LandPadResolver);
   });
 
   it('should be defined', () => {
