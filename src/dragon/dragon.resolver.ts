@@ -1,4 +1,5 @@
-import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@app/interfaces';
 
 import { DragonService } from './dragon.service';
 import { Dragon } from './models/Dragon.model';
@@ -20,11 +21,8 @@ export class DragonResolver {
 
   @Query(() => DragonQuery)
   getDragonByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    { page, limit, sort }: QueryInputParameters,
   ) {
     this.dragonService.getDragonByQuery(page, limit, sort);
   }

@@ -1,4 +1,5 @@
-import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@app/interfaces';
 
 import { LaunchPadService } from './launchpad.service';
 import { LaunchPad } from './models/LaunchPad.model';
@@ -20,11 +21,8 @@ export class LaunchpadResolver {
 
   @Query(() => LaunchPadQuery)
   getLaunchPadByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    { page, limit, sort }: QueryInputParameters,
   ) {
     this.launchPadService.getLaunchPadByQuery(page, limit, sort);
   }

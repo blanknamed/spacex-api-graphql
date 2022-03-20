@@ -1,4 +1,5 @@
-import { Args, Int, Resolver, Query } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@app/interfaces';
 
 import { RocketService } from './rocket.service';
 import { Rocket } from './models/Rocket.model';
@@ -20,11 +21,8 @@ export class RocketResolver {
 
   @Query(() => RocketQuery)
   async getRocketByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    { page, limit, sort }: QueryInputParameters,
   ) {
     return this.rocketService.getRocketByQuery(page, limit, sort);
   }

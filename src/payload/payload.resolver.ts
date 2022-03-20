@@ -28,13 +28,9 @@ export class PayloadResolver {
   @Query(() => PayloadQuery)
   async getPayloadByQuery(
     @Args()
-    params: QueryInputParameters,
+    { page, limit, sort }: QueryInputParameters,
   ) {
-    return this.payloadService.getPayloadByQuery(
-      params.page,
-      params.limit,
-      params.sort,
-    );
+    return this.payloadService.getPayloadByQuery(page, limit, sort);
   }
 
   @ResolveField('launch', () => Launch)

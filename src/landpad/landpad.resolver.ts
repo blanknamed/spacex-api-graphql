@@ -1,4 +1,5 @@
-import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@app/interfaces';
 
 import { LandPadService } from './landpad.service';
 import { LandpadQuery } from './models/LandPadQuery.model';
@@ -20,11 +21,8 @@ export class LandPadResolver {
 
   @Query(() => LandpadQuery)
   getLandPadByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    { page, limit, sort }: QueryInputParameters,
   ) {
     return this.landPadService.getLandPadByQuery(page, limit, sort);
   }
