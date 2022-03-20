@@ -1,38 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
-import { ApiQueryRequest, UtilsService } from '@app/utils';
+import { ApiService } from '@api/api.service';
+import { ApiQueryRequest } from '@api/interfaces';
 
 import * as CapsuleUrls from './constants/urls';
 import { CapsuleQuery } from './models/CapsuleQuery.model';
 
 @Injectable()
 export class CapsuleService {
-  constructor(
-    private readonly httpService: HttpService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   getAllCapsules() {
-    return this.httpService
+    return this.apiService
       .get(CapsuleUrls.baseCapsuleUrl)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   getCapsuleById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${CapsuleUrls.baseCapsuleUrl}/${id}`)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   getCapsuleByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<CapsuleQuery>(CapsuleUrls.queryCapsuleUrl, {
         options: {
           limit,
@@ -40,9 +31,6 @@ export class CapsuleService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 }

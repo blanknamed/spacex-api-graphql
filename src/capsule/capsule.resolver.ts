@@ -1,4 +1,5 @@
-import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
+import { QueryInputParameters } from '@api/interfaces';
 
 import { CapsuleService } from './capsule.service';
 import { Capsule } from './models/Capsule.model';
@@ -20,11 +21,8 @@ export class CapsuleResolver {
 
   @Query(() => CapsuleQuery)
   getCapsuleByQuery(
-    @Args('page', { type: () => Int, nullable: true, defaultValue: 1 })
-    page: number,
-    @Args('limit', { type: () => Int, nullable: true, defaultValue: 10 })
-    limit: number,
-    @Args('sort', { type: () => String, nullable: true }) sort: string,
+    @Args()
+    { page, limit, sort }: QueryInputParameters,
   ) {
     return this.capsuleService.getCapsuleByQuery(page, limit, sort);
   }

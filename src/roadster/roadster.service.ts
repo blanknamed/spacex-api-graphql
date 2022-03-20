@@ -1,21 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
-import { UtilsService } from '@app/utils';
 import { map } from 'rxjs';
+import { ApiService } from '@api/api.service';
 
 @Injectable()
 export class RoadsterService {
-  constructor(
-    private readonly httpService: HttpService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   getRoadsterInfo() {
-    return this.httpService
-      .get('/roadster')
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+    return this.apiService.get('/roadster').pipe(map((res) => res.data));
   }
 }

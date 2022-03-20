@@ -1,38 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs';
-import { UtilsService, ApiQueryRequest } from '@app/utils';
+import { ApiService } from '@api/api.service';
+import { ApiQueryRequest } from '@api/interfaces';
 
 import { RocketQuery } from './models/RocketQuery.model';
 import * as RocketUrls from './constants/urls';
 
 @Injectable()
 export class RocketService {
-  constructor(
-    private readonly httpService: HttpService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   async getAllRockets() {
-    return this.httpService
+    return this.apiService
       .get(RocketUrls.baseRocketUrl)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   async getRocketById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${RocketUrls.baseRocketUrl}/${id}`)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   async getRocketByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<RocketQuery>(RocketUrls.queryRocketUrl, {
         options: {
           limit,
@@ -40,9 +31,6 @@ export class RocketService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 }

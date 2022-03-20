@@ -1,30 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { ApiService } from '@api/api.service';
 import { ApiQueryRequest } from '@api/interfaces';
+import { ApiService } from '@api/api.service';
 
-import * as DragonUrls from './constants/urls';
-import { DragonQuery } from './models/DragonQuery.model';
+import * as PayloadUrls from './constants/urls';
+import { PayloadQuery } from './models/PayloadQuery.model';
 
 @Injectable()
-export class DragonService {
+export class PayloadService {
   constructor(private readonly apiService: ApiService) {}
 
-  getAllDragons() {
+  getAllPayloads() {
     return this.apiService
-      .get(DragonUrls.baseDragonUrl)
+      .get(PayloadUrls.basePayloadUrl)
       .pipe(map((res) => res.data));
   }
 
-  getDragonById(id: string) {
+  getPayloadById(id: string) {
     return this.apiService
-      .get(`${DragonUrls.baseDragonUrl}/${id}`)
+      .get(`${PayloadUrls.basePayloadUrl}/${id}`)
       .pipe(map((res) => res.data));
   }
 
-  getDragonByQuery(page: number, limit: number, sort: string) {
+  getPayloadByQuery(page: number, limit: number, sort: string) {
     return this.apiService
-      .post<DragonQuery>(DragonUrls.queryDragonUrl, {
+      .post<PayloadQuery>(PayloadUrls.queryPayloadUrl, {
         options: {
           limit,
           page,

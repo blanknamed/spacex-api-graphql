@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
-import { ApiQueryRequest, UtilsService } from '@app/utils';
 import { map } from 'rxjs';
+import { ApiService } from '@api/api.service';
+import { ApiQueryRequest } from '@api/interfaces';
 
 import * as CrewUrls from '../crew/constants/urls';
 
@@ -10,31 +10,22 @@ import { LandpadQuery } from './models/LandPadQuery.model';
 
 @Injectable()
 export class LandPadService {
-  constructor(
-    private readonly httpService: HttpService,
-    private readonly utilsService: UtilsService,
-  ) {}
+  constructor(private readonly apiService: ApiService) {}
 
   async getAllLandPads() {
-    return this.httpService
+    return this.apiService
       .get(LandPadUrls.baseLandPadUrl)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   async getLandPadById(id: string) {
-    return this.httpService
+    return this.apiService
       .get(`${LandPadUrls.baseLandPadUrl}/${id}`)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 
   async getLandPadByQuery(page: number, limit: number, sort: string) {
-    return this.httpService
+    return this.apiService
       .post<LandpadQuery>(CrewUrls.queryCrewUrl, {
         options: {
           limit,
@@ -42,9 +33,6 @@ export class LandPadService {
           sort,
         },
       } as ApiQueryRequest)
-      .pipe(
-        map(this.utilsService.mapData),
-        map(this.utilsService.camelCaseDataKeys),
-      );
+      .pipe(map((res) => res.data));
   }
 }
