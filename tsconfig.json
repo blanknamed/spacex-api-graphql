@@ -18,16 +18,16 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/api":  [
+      "@api":  [
         "src/api"
       ],
-      "@app/api/*":  [
+      "@api/*":  [
         "src/api/*"
       ],
-      "@app/interfaces":  [
+      "@interfaces":  [
         "src/interfaces"
       ],
-      "@app/interfaces/*":  [
+      "@interfaces/*":  [
         "src/interfaces/*"
       ]
     }
