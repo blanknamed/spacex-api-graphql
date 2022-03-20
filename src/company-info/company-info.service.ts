@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { ApiService } from '@app/api/api.service';
+import { ApiService } from '@api/api.service';
 
 @Injectable()
 export class CompanyInfoService {

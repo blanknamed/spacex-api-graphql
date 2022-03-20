@@ -1,5 +1,5 @@
 import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { QueryInputParameters } from '@app/interfaces';
+import { QueryInputParameters } from '@api/interfaces';
 
 import { LaunchService } from '../launch/launch.service';
 import { Launch } from '../launch/models/Launch.model';

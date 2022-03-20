@@ -1,5 +1,5 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { QueryInputParameters } from '@app/interfaces';
+import { QueryInputParameters } from '@api/interfaces';
 
 import { CrewService } from './crew.service';
 import { CrewQuery } from './models/CrewQuery.model';

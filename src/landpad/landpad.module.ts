@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ApiModule } from '@app/api/api.module';
+import { ApiModule } from '@api/api.module';
 
 import { LandPadResolver } from './landpad.resolver';
 import { LandPadService } from './landpad.service';

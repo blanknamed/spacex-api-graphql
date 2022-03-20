@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { MassUnits, SizeUnits, VolumeUnits } from '@app/interfaces';
+import { MassUnits, SizeUnits, VolumeUnits } from '@interfaces';
 
 import { HeatShield } from './HeatShield.model';
 import { Thrusters } from './Thrusters.model';

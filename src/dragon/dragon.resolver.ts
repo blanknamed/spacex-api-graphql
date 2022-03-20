@@ -1,5 +1,5 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { QueryInputParameters } from '@app/interfaces';
+import { QueryInputParameters } from '@api/interfaces';
 
 import { DragonService } from './dragon.service';
 import { Dragon } from './models/Dragon.model';

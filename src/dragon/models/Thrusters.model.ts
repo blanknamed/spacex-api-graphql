@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { ThrustUnits } from '@app/interfaces';
+import { ThrustUnits } from '@interfaces';
 
 @ObjectType()
 export class Thrusters {

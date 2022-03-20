@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { ApiQueryRequest } from '@app/api/interfaces';
-import { ApiService } from '@app/api/api.service';
+import { ApiQueryRequest } from '@api/interfaces';
+import { ApiService } from '@api/api.service';
 
 import * as PayloadUrls from './constants/urls';
 import { PayloadQuery } from './models/PayloadQuery.model';
